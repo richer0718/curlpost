@@ -9,8 +9,14 @@ class ApiController extends Controller
     //
     function makeCodeImg(){
         $uuid = uniqid();
-        $this -> getImg("https://ydj.alltobid.com/PreCheckInApi/ImgCode/GenerateVerificationImage?".time(),"upload/".$uuid.".jpg",$uuid);
-        echo  $uuid.'.jpg';
+        $this -> getImg("https://ydj.alltobid.com/PreCheckInApi/ImgCode/GenerateVerificationImage?".time(),public_path().'/codeimg/'.$uuid.".jpg",$uuid);
+        return ['img' => public_path().'/codeimg/'.$uuid.'.jpg',
+            'file' => file_get_contents(public_path().'/codetxt/'.$uuid.".txt")];
+
+        return response() -> json([
+            'img' => public_path().'/codeimg/'.$uuid.'.jpg',
+            'file' => file_get_contents(public_path().'/codetxt/'.$uuid.".txt"),
+        ]);
 
     }
 
@@ -29,12 +35,23 @@ class ApiController extends Controller
         curl_setopt($hander,CURLOPT_TIMEOUT,60);
         curl_setopt($hander,CURLOPT_COOKIEJAR,$cookie_file);
 
-        file_put_contents($uuid.'.txt',$cookie_file);
+        file_put_contents(public_path().'/codetxt/'.$uuid.'.txt',$cookie_file);
         //var_dump($cookie_file);
         curl_exec($hander);
         curl_close($hander);
         fclose($fp);
         Return true;
+    }
+
+    function getImage(){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://ydj.alltobid.com/PreCheckInApi/ImgCode/GenerateVerificationImage?".time());
+        curl_setopt($curl, CURLOPT_REFERER, '');
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Baiduspider');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        header('Content-type: image/JPEG');
+        echo $result;
     }
 
 
@@ -78,5 +95,13 @@ class ApiController extends Controller
             echo $res;
 
         }
+    }
+
+    function page(){
+        $data = $this -> makeCodeImg();
+
+        return view('page') -> with([
+            'data' => $data
+        ]);
     }
 }

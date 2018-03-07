@@ -14,10 +14,12 @@
 //api
 Route::group(['prefix' => 'api'], function () {
     //table1
-    Route::get('/makeCodeImg', 'ApiController@uploadNumber');
-    Route::get('/postUrl', 'ApiController@postUrl');
+    Route::get('/makeCodeImg', 'ApiController@makeCodeImg');
+    Route::post('/postUrl', 'ApiController@postUrl');
 
 });
+
+Route::get('/page','ApiController@page');
 
 
 
