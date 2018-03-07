@@ -10,7 +10,7 @@ class ApiController extends Controller
     function makeCodeImg(){
         $uuid = uniqid();
         $this -> getImg("https://ydj.alltobid.com/PreCheckInApi/ImgCode/GenerateVerificationImage?".time(),"upload/".$uuid.".jpg",$uuid);
-        return $uuid.'.jpg';
+        echo  $uuid.'.jpg';
 
     }
 

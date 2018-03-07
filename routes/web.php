@@ -10,18 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 
+//api
 Route::group(['prefix' => 'api'], function () {
-
-    Route::get('/makeCodeImg', 'ApiController@makeCodeImg');
-
+    //table1
+    Route::get('/makeCodeImg', 'ApiController@uploadNumber');
     Route::get('/postUrl', 'ApiController@postUrl');
 
-
 });
+
+
+
+
+
+
+
+
+
+
+
 
