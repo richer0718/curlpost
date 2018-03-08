@@ -23,6 +23,8 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::get('/page','ApiController@page');
 
+Route::get('/carpage','ApiController@carpage');
+
 
 
 
