@@ -233,4 +233,12 @@ class ApiController extends Controller
             'data' => $data
         ]);
     }
+    
+    function carpage(){
+        $data = $this -> makeCarCodeImg();
+
+        return view('page') -> with([
+            'data' => $data
+        ]);
+    }
 }
