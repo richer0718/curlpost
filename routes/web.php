@@ -13,8 +13,11 @@
 
 //api
 Route::group(['prefix' => 'api'], function () {
-    //table1
+    //page用的
     Route::get('/makeCodeImg', 'ApiController@makeCodeImg');
+    //carpage用的 carpage
+    Route::get('/makeCarCodeImg', 'ApiController@makeCarCodeImg');
+    
     
     Route::post('/postUrl', 'ApiController@postUrl');
     Route::get('/makeCodeImage', 'ApiController@makeCodeImage');
