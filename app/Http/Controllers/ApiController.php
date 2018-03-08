@@ -205,6 +205,7 @@ class ApiController extends Controller
     "ErrorMessage": "图片验证码错误"
 }
             */
+            var_dump($url);
             var_dump($contents);exit;
             $json_data = json_decode($contents,true);
             if($json_data['Code'] == '101'){
