@@ -187,10 +187,11 @@ class ApiController extends Controller
         if(isset($_POST['number']) && isset($_POST['file']) && isset($_POST['code']) && isset($_POST['time']) ){
             //var_dump($_POST['file']);
             $cookie_file = $_POST['file'];
+            
             $temp = file_get_contents($cookie_file);
-            var_dump($temp);
+            //取出sessionid
             preg_match('/JSESSIONID(.*?)$/',$temp,$s1);
-            print_r($s1[1]);
+            $session_id = trim($s1[1]);
                 
             
 
@@ -198,6 +199,7 @@ class ApiController extends Controller
             $ch=curl_init($url);
             curl_setopt($ch,CURLOPT_HEADER,0);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+            curl_setopt($ch, CURLOPT_COOKIE, 'PHPSESSID=' . $session_id);
             //curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
             curl_setopt($ch,CURLOPT_COOKIEFILE,$cookie_file); //使用提交后得到的cookie数据做参数
             $contents=curl_exec($ch);
