@@ -188,6 +188,7 @@ class ApiController extends Controller
             //var_dump($_POST['file']);
             $cookie_file = $_POST['file'];
             var_dump(file_get_contents($cookie_file));
+            var_dump(session_id());
                 
             
 
