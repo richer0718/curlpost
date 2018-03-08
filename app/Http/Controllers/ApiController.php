@@ -187,7 +187,7 @@ class ApiController extends Controller
         if(isset($_POST['number']) && isset($_POST['file']) && isset($_POST['code']) && isset($_POST['time']) ){
             //var_dump($_POST['file']);
             $cookie_file = $_POST['file'];
-            var_dump(fopen($cookie_file));
+            var_dump(file_get_contents($cookie_file));
                 
             
 
