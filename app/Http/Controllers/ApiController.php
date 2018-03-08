@@ -23,9 +23,12 @@ class ApiController extends Controller
     //页面2用
     function makeCarCodeImg(){
         $uuid = 'car_'.uniqid();
-        $this -> getCarImg("http://jj.gzqcjj.com/servlet/CheckCodeServlet?r=".time(),public_path().'/codeimg/'.$uuid.".jpg",$uuid);
+        $time = time();
+        $this -> getCarImg("http://jj.gzqcjj.com/servlet/CheckCodeServlet?r=".$time,public_path().'/codeimg/'.$uuid.".jpg",$uuid);
+     
         return ['img' => 'http://feifeifuzhu.com/curlpost/public/codeimg/'.$uuid.'.jpg',
-            'file' => file_get_contents(public_path().'/codetxt/'.$uuid.".txt")];
+            'file' => file_get_contents(public_path().'/codetxt/'.$uuid.".txt"),
+               'time'=>$time];
         
         return response() -> json([
             'img' => 'http://feifeifuzhu.com/curlpost/public/codeimg/'.$uuid.'.jpg',
