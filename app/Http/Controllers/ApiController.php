@@ -188,7 +188,8 @@ class ApiController extends Controller
             //var_dump($_POST['file']);
             $cookie_file = $_POST['file'];
             var_dump(file_get_contents($cookie_file));
-            var_dump(session_id());
+            preg_match('/JSESSIONID(.*?)$/',$str1,$s1);
+            print_r($s1[1]);
                 
             
 
