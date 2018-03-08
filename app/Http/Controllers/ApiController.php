@@ -199,6 +199,7 @@ class ApiController extends Controller
             $ch=curl_init($url);
             curl_setopt($ch,CURLOPT_HEADER,0);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36');
             curl_setopt($ch, CURLOPT_COOKIE, 'JSESSIONID=' . $session_id);
             //curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
             curl_setopt($ch,CURLOPT_COOKIEFILE,$cookie_file); //使用提交后得到的cookie数据做参数
