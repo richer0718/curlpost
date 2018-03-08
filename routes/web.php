@@ -20,7 +20,9 @@ Route::group(['prefix' => 'api'], function () {
     
     
     Route::post('/postUrl', 'ApiController@postUrl');
+    Route::post('/postCarUrl', 'ApiController@postCarUrl');
     Route::get('/makeCodeImage', 'ApiController@makeCodeImage');
+    Route::get('/makeCarCodeImage', 'ApiController@makeCarCodeImage');
 
 });
 
