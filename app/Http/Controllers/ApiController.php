@@ -189,7 +189,7 @@ class ApiController extends Controller
             $cookie_file = $_POST['file'];
             
 
-            $url="http://jj.gzqcjj.com/carbid/getbail?appno=".$_POST['number']."&code=".$_POST['code']."&_=".$_POST['time'];
+            $url="http://jj.gzqcjj.com/carbid/getbail?appno=".trim($_POST['number'])."&code=".$_POST['code']."&_=".$_POST['time'];
             $ch=curl_init($url);
             curl_setopt($ch,CURLOPT_HEADER,0);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
