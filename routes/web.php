@@ -15,7 +15,9 @@
 Route::group(['prefix' => 'api'], function () {
     //table1
     Route::get('/makeCodeImg', 'ApiController@makeCodeImg');
+    
     Route::post('/postUrl', 'ApiController@postUrl');
+    Route::get('/makeCodeImage', 'ApiController@makeCodeImage');
 
 });
 
