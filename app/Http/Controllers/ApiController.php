@@ -78,6 +78,15 @@ class ApiController extends Controller
             curl_setopt($ch,CURLOPT_COOKIEFILE,$cookie_file); //使用提交后得到的cookie数据做参数
             $contents=curl_exec($ch);
             curl_close($ch);
+            /*
+            {
+    "Code": 101,
+    "Description": "参数解析错误",
+    "ReturnData": false,
+    "ErrorMessage": "图片验证码错误"
+}
+            */
+            var_dump($contents);exit;
 
             //var_dump($contents);
 
