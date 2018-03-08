@@ -196,6 +196,9 @@ class ApiController extends Controller
             //curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
             curl_setopt($ch,CURLOPT_COOKIEFILE,$cookie_file); //使用提交后得到的cookie数据做参数
             $contents=curl_exec($ch);
+            if (curl_errno($ch)) {
+             var_dump( curl_error($ch) );
+        }
             curl_close($ch);
             /*
             {
